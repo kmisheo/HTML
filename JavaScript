@@ -1,0 +1,85 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Lista de senhas absurdas famosas para conferência rápida
+    const senhasAbsurdas = ['123456', 'password', '111111', 'mudar123', 'senha', 'admin', '123456789'];
+
+    // Elementos da Interface
+    const passwordInput = document.getElementById('password-input');
+    const btnVerify = document.getElementById('btn-verify');
+    const feedbackContainer = document.getElementById('feedback-container');
+    const feedbackStatus = document.getElementById('feedback-status');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const cards = document.querySelectorAll('.card');
+
+    // 1. Lógica do Simulador Interativo
+    function verificarSenha() {
+        const senha = passwordInput.value.trim();
+
+        // Se o campo estiver vazio, apenas reseta o feedback
+        if (senha === '') {
+            feedbackContainer.className = 'feedback hidden';
+            return;
+        }
+
+        // Mostra o container removendo o 'hidden'
+        feedbackContainer.classList.remove('hidden');
+
+        // Regra 1: Está na lista negra de senhas ultra absurdas
+        if (senhasAbsurdas.includes(senha.toLowerCase())) {
+            feedbackContainer.className = 'feedback error';
+            feedbackStatus.textContent = '🚨 ERRO CRÍTICO: Nível de Absurdo Máximo!';
+            feedbackMessage.textContent = 'Parabéns! Um hacker de 5 anos de idade usando um micro-ondas quebrado conseguiria quebrar sua senha em 0.2 segundos.';
+            return;
+        }
+
+        // Regra 2: Muito curta ou puramente numérica
+        const apenasNumeros = /^\d+$/.test(senha);
+        if (senha.length < 6 || apenasNumeros) {
+            feedbackContainer.className = 'feedback warning';
+            feedbackStatus.textContent = '⚠️ ALERTA: Senha de Preguiçoso';
+            feedbackMessage.textContent = 'Um hacker conseguiria adivinhar isso facilmente enquanto toma um café gelado no Starbucks. Adicione letras e símbolos urgentemente!';
+            return;
+        }
+
+        // Regra 3: Robusta (Mistura tudo e tem tamanho decente)
+        const temLetraMaiuscula = /[A-Z]/.test(senha);
+        const temLetraMinuscula = /[a-z]/.test(senha);
+        const temNumero = /[0-9]/.test(senha);
+        const temSimbolo = /[^A-Za-z0-9]/.test(senha);
+
+        if (senha.length >= 10 && temLetraMaiuscula && temLetraMinuscula && temNumero && temSimbolo) {
+            feedbackContainer.className = 'feedback success';
+            feedbackStatus.textContent = '🛡️ IMPRESSIONANTE: Você Transcendeu!';
+            feedbackMessage.textContent = 'Uau! Uma senha com complexidade real. Você por acaso não usa o nome do seu cachorro nem o seu ano de nascimento? Estou orgulhoso.';
+        } else {
+            // Caso caia no meio termo (nem absurda total, nem ultra forte)
+            feedbackContainer.className = 'feedback warning';
+            feedbackStatus.textContent = '🤨 Dá pra melhorar...';
+            feedbackMessage.textContent = 'Não é o pior erro da história da humanidade, mas ainda está frágil. Tente torná-la mais longa e adicione caracteres especiais.';
+        }
+    }
+
+    // Eventos do Simulador
+    btnVerify.addEventListener('click', verificarSenha);
+    
+    // Permite que o usuário aperte "Enter" no teclado para verificar
+    passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            verificarSenha();
+        }
+    });
+
+    // 2. Interação dos Cards (Efeito de clique para preencher o simulador)
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const senhaExemplo = card.getAttribute('data-senha');
+            passwordInput.value = senhaExemplo;
+            
+            // Rola a página suavemente até o simulador e aciona a validação automaticamente
+            document.getElementById('simulador').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                verificarSenha();
+            }, 500);
+        });
+    });
+});
