@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senhas Absurdas - Cibersegurança com Humor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo"><span>Safe</span>Comedy</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">As Senhas Mais <span>Absurdas</span> Que as Pessoas Usam</h1>
+            <p class="hero-subtitle">Se a sua senha está nessa lista, um hacker não precisa de um supercomputador... ele só precisa chutar duas vezes.</p>
+            <a href="#simulador" class="btn-cta">Testar Minha Senha</a>
+        </section>
+
+        <section class="ranking-section">
+            <h2 class="section-title">O Hall da Vergonha das Senhas</h2>
+            <p class="section-subtitle">O topo do ranking global do perigo digital. Clique nos cards para entender o porquê.</p>
+            
+            <div class="cards-grid">
+                <article class="card" data-senha="123456">
+                    <div class="card-badge">#1 Mais Usada</div>
+                    <h3 class="card-password">123456</h3>
+                    <p class="card-desc">O clássico absoluto da preguiça humana. Usar isso é o equivalente a trancar a porta de casa e deixar a chave na fechadura pelo lado de fora.</p>
+                </article>
+
+                <article class="card" data-senha="password">
+                    <div class="card-badge">#2 Mais Usada</div>
+                    <h3 class="card-password">password</h3>
+                    <p class="card-desc">Literalmente "senha" em inglês. Gênios da estratégia digital usam essa para confundir o hacker... mas só confundem a própria inteligência.</p>
+                </article>
+
+                <article class="card" data-senha="111111">
+                    <div class="card-badge">#3 Mais Usada</div>
+                    <h3 class="card-password">111111</h3>
+                    <p class="card-desc">Para quem acha que digitar números diferentes dá trabalho demais. Um robô descobre essa senha antes mesmo do seu computador ligar.</p>
+                </article>
+
+                <article class="card" data-senha="mudar123">
+                    <div class="card-badge">#4 Mais Usada</div>
+                    <h3 class="card-password">mudar123</h3>
+                    <p class="card-desc">Geralmente a senha provisória que a TI cria. O problema é que o "provisório" vira eterno, e o hacker agradece a facilidade.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="simulador" class="simulator-section">
+            <div class="simulator-box">
+                <h2 class="section-title">Simulador de Absurdidade</h2>
+                <p class="simulator-intro">Digite uma senha abaixo para medir o nível de vulnerabilidade e ver o veredito do nosso sistema de inteligência irônica.</p>
+                
+                <div class="input-group">
+                    <input type="text" id="password-input" placeholder="Digite uma senha para testar..." autocomplete="off">
+                    <button id="btn-verify">Verificar Absurdidade</button>
+                </div>
+
+                <div id="feedback-container" class="feedback hidden">
+                    <h4 id="feedback-status"></h4>
+                    <p id="feedback-message"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Como não passar vergonha com suas senhas:</h3>
+            <ul class="tips-list">
+                <li><strong>Tamanho é documento:</strong> Use pelo menos 12 caracteres.</li>
+                <li><strong>Misture a salada:</strong> Use letras maiúsculas, minúsculas, números e símbolos (@, #, $, !).</li>
+                <li><strong>Esqueça o óbvio:</strong> Nada de data de nascimento, nome do cachorro ou sequências do teclado.</li>
+                <li><strong>Use um gerente:</strong> Adote um gerenciador de senhas para não precisar decorar tudo.</li>
+            </ul>
+            <p class="copyright">&copy; 2026 SafeComedy. Feito para conscientizar (e rir um pouco).</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
